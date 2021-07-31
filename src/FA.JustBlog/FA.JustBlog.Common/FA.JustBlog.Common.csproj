@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{51C5183D-8948-44DF-9F26-54B986B2B0F8}</ProjectGuid>
+    <ProjectGuid>{00201A08-8C4F-4890-82E6-3A07A588ECAE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FA.JustBlog.Data</RootNamespace>
-    <AssemblyName>FA.JustBlog.Data</AssemblyName>
+    <RootNamespace>FA.JustBlog.Common</RootNamespace>
+    <AssemblyName>FA.JustBlog.Common</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -51,23 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbInitializer.cs" />
-    <Compile Include="Infrastructure\BaseRepositories\GenericRepository.cs" />
-    <Compile Include="Infrastructure\BaseRepositories\IGenericRepository.cs" />
-    <Compile Include="Infrastructure\IUnitOfWork.cs" />
-    <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="JustBlogDbContext.cs" />
+    <Compile Include="Paginated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FA.JustBlog.Models\FA.JustBlog.Models.csproj">
-      <Project>{bda93793-e131-4d5b-ac5d-91f508954ae2}</Project>
-      <Name>FA.JustBlog.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
