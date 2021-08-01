@@ -7,13 +7,13 @@ namespace FA.JustBlog.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class initilcreate : IMigrationMetadata
+    public sealed partial class Fix : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initilcreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Fix));
         
         string IMigrationMetadata.Id
         {
-            get { return "202108010826344_initilcreate"; }
+            get { return "202108010910229_Fix"; }
         }
         
         string IMigrationMetadata.Source
