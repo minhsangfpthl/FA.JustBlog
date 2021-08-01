@@ -170,6 +170,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -188,6 +189,24 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FA.JustBlog.Common\FA.JustBlog.Common.csproj">
+      <Project>{00201a08-8c4f-4890-82e6-3a07a588ecae}</Project>
+      <Name>FA.JustBlog.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FA.JustBlog.Data\FA.JustBlog.Data.csproj">
+      <Project>{51c5183d-8948-44df-9f26-54b986b2b0f8}</Project>
+      <Name>FA.JustBlog.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FA.JustBlog.Models\FA.JustBlog.Models.csproj">
+      <Project>{bda93793-e131-4d5b-ac5d-91f508954ae2}</Project>
+      <Name>FA.JustBlog.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FA.JustBlog.Services\FA.JustBlog.Services.csproj">
+      <Project>{ae7a71ca-ece2-4917-aff2-508e48f45d25}</Project>
+      <Name>FA.JustBlog.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
