@@ -1,6 +1,8 @@
-﻿using System;
+﻿using FA.JustBlog.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,9 +10,15 @@ namespace FA.JustBlog.WebMVC.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly IPostServices _postServices;
+        public HomeController(IPostServices postServices)
         {
-            return View();
+            _postServices = postServices;
+        }
+        public async Task<ActionResult> Index()
+        {
+            var posts = await _postServices.GetAllAsync();
+            return View(posts);
         }
 
         public ActionResult About()
