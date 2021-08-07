@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B20F2685-C231-4754-B10B-D36FF8AD21D1}</ProjectGuid>
+    <ProjectGuid>{4208BF96-3B03-4DD1-8D33-293EE0E28DA9}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -56,6 +56,12 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -109,6 +115,18 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Abstractions, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Abstractions.5.11.1\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.11.1\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc.5.11.1\lib\net47\Unity.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -127,14 +145,178 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\breadcrumb.css" />
+    <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\responsive.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\css\_button.css" />
+    <Content Include="assets\css\_feature.css" />
+    <Content Include="assets\css\_footer.css" />
+    <Content Include="assets\css\_team.css" />
+    <Content Include="assets\css\_testimonials.css" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\images\blog-1.jpg" />
+    <Content Include="assets\images\blog-2.jpg" />
+    <Content Include="assets\images\blog-3.jpg" />
+    <Content Include="assets\images\blog-4.jpg" />
+    <Content Include="assets\images\bootstrap-solid.svg" />
+    <Content Include="assets\img\banner\banner-2.jpg" />
+    <Content Include="assets\img\banner\banner.jpg" />
+    <Content Include="assets\img\banner\home-banner.jpg" />
+    <Content Include="assets\img\blog\add-1.jpg" />
+    <Content Include="assets\img\blog\add.jpg" />
+    <Content Include="assets\img\blog\author.png" />
+    <Content Include="assets\img\blog\c1.jpg" />
+    <Content Include="assets\img\blog\c2.jpg" />
+    <Content Include="assets\img\blog\c3.jpg" />
+    <Content Include="assets\img\blog\c4.jpg" />
+    <Content Include="assets\img\blog\c5.jpg" />
+    <Content Include="assets\img\blog\c6.jpg" />
+    <Content Include="assets\img\blog\cat-post\cat-post-1.jpg" />
+    <Content Include="assets\img\blog\cat-post\cat-post-2.jpg" />
+    <Content Include="assets\img\blog\cat-post\cat-post-3.jpg" />
+    <Content Include="assets\img\blog\causes\causes-1.jpg" />
+    <Content Include="assets\img\blog\causes\causes-2.jpg" />
+    <Content Include="assets\img\blog\causes\causes-3.jpg" />
+    <Content Include="assets\img\blog\choice\choice-1.jpg" />
+    <Content Include="assets\img\blog\choice\choice-2.jpg" />
+    <Content Include="assets\img\blog\choice\choice-3.jpg" />
+    <Content Include="assets\img\blog\choice\choice-4.jpg" />
+    <Content Include="assets\img\blog\feature-img1.jpg" />
+    <Content Include="assets\img\blog\l-news\l-news-1.jpg" />
+    <Content Include="assets\img\blog\l-news\l-news-2.jpg" />
+    <Content Include="assets\img\blog\l-news\l-news-3.jpg" />
+    <Content Include="assets\img\blog\l-news\l-news-4.jpg" />
+    <Content Include="assets\img\blog\main-blog\m-blog-1.jpg" />
+    <Content Include="assets\img\blog\main-blog\m-blog-2.jpg" />
+    <Content Include="assets\img\blog\main-blog\m-blog-3.jpg" />
+    <Content Include="assets\img\blog\main-blog\m-blog-4.jpg" />
+    <Content Include="assets\img\blog\main-blog\m-blog-5.jpg" />
+    <Content Include="assets\img\blog\news-blog.jpg" />
+    <Content Include="assets\img\blog\next.jpg" />
+    <Content Include="assets\img\blog\popular-post\post1.jpg" />
+    <Content Include="assets\img\blog\popular-post\post2.jpg" />
+    <Content Include="assets\img\blog\popular-post\post3.jpg" />
+    <Content Include="assets\img\blog\popular-post\post4.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-1.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-10.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-11.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-12.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-13.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-14.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-2.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-3.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-4.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-5.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-6.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-7.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-8.jpg" />
+    <Content Include="assets\img\blog\popular-post\pp-9.jpg" />
+    <Content Include="assets\img\blog\post-img1.jpg" />
+    <Content Include="assets\img\blog\post-img2.jpg" />
+    <Content Include="assets\img\blog\prev.jpg" />
+    <Content Include="assets\img\blog\user-img.jpg" />
+    <Content Include="assets\img\elements\a.jpg" />
+    <Content Include="assets\img\elements\a2.jpg" />
+    <Content Include="assets\img\elements\d.jpg" />
+    <Content Include="assets\img\elements\disabled-check.png" />
+    <Content Include="assets\img\elements\disabled-radio.png" />
+    <Content Include="assets\img\elements\f1.jpg" />
+    <Content Include="assets\img\elements\f2.jpg" />
+    <Content Include="assets\img\elements\f3.jpg" />
+    <Content Include="assets\img\elements\f4.jpg" />
+    <Content Include="assets\img\elements\f5.jpg" />
+    <Content Include="assets\img\elements\f6.jpg" />
+    <Content Include="assets\img\elements\f7.jpg" />
+    <Content Include="assets\img\elements\f8.jpg" />
+    <Content Include="assets\img\elements\g1.jpg" />
+    <Content Include="assets\img\elements\g2.jpg" />
+    <Content Include="assets\img\elements\g3.jpg" />
+    <Content Include="assets\img\elements\g4.jpg" />
+    <Content Include="assets\img\elements\g5.jpg" />
+    <Content Include="assets\img\elements\g6.jpg" />
+    <Content Include="assets\img\elements\g7.jpg" />
+    <Content Include="assets\img\elements\g8.jpg" />
+    <Content Include="assets\img\elements\primary-check.png" />
+    <Content Include="assets\img\elements\primary-radio.png" />
+    <Content Include="assets\img\elements\success-check.png" />
+    <Content Include="assets\img\elements\success-radio.png" />
+    <Content Include="assets\img\elements\user1.png" />
+    <Content Include="assets\img\elements\user2.png" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\footer-logo.png" />
+    <Content Include="assets\img\home-blog\blog-1.jpg" />
+    <Content Include="assets\img\home-blog\blog-2.jpg" />
+    <Content Include="assets\img\home-blog\blog-3.jpg" />
+    <Content Include="assets\img\home-blog\blog-4.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-1.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-2.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-3.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-4.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-5.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-6.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-7.jpg" />
+    <Content Include="assets\img\home-blog\blog-small-8.jpg" />
+    <Content Include="assets\img\instagram\Image-01.jpg" />
+    <Content Include="assets\img\instagram\Image-02.jpg" />
+    <Content Include="assets\img\instagram\Image-03.jpg" />
+    <Content Include="assets\img\instagram\Image-04.jpg" />
+    <Content Include="assets\img\instagram\Image-05.jpg" />
+    <Content Include="assets\img\instagram\Image-06.jpg" />
+    <Content Include="assets\img\instagram\Image-07.jpg" />
+    <Content Include="assets\img\instagram\Image-08.jpg" />
+    <Content Include="assets\img\logo.png" />
+    <Content Include="assets\img\post-slider\post-cat-1.jpg" />
+    <Content Include="assets\img\post-slider\post-cat-2.jpg" />
+    <Content Include="assets\img\post-slider\post-s-1.jpg" />
+    <Content Include="assets\img\post-slider\post-s-2.jpg" />
+    <Content Include="assets\img\post-slider\post-s-3.jpg" />
+    <Content Include="assets\img\post-slider\post-s-4.jpg" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\contact.js" />
+    <Content Include="assets\js\gmaps.min.js" />
+    <Content Include="assets\js\jquery-3.2.1.min.js" />
+    <Content Include="assets\js\jquery.ajaxchimp.min.js" />
+    <Content Include="assets\js\jquery.form.js" />
+    <Content Include="assets\js\jquery.validate.min.js" />
+    <Content Include="assets\js\mail-script.js" />
+    <Content Include="assets\js\popper.js" />
+    <Content Include="assets\js\stellar.js" />
+    <Content Include="assets\js\theme.js" />
+    <Content Include="assets\vendors\animate-css\animate.css" />
+    <Content Include="assets\vendors\animate-css\wow.min.js" />
+    <Content Include="assets\vendors\bootstrap-datepicker\bootstrap-datetimepicker.min.css" />
+    <Content Include="assets\vendors\bootstrap-datepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="assets\vendors\bootstrap-datepicker\bootstrap-select.css" />
+    <Content Include="assets\vendors\bootstrap-datepicker\bootstrap-select.js" />
+    <Content Include="assets\vendors\isotope\imagesloaded.pkgd.min.js" />
+    <Content Include="assets\vendors\isotope\isotope-min.js" />
+    <Content Include="assets\vendors\jquery-ui\jquery-ui.css" />
+    <Content Include="assets\vendors\jquery-ui\jquery-ui.js" />
+    <Content Include="assets\vendors\lightbox\simpleLightbox.css" />
+    <Content Include="assets\vendors\lightbox\simpleLightbox.min.js" />
+    <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.svg" />
+    <Content Include="assets\vendors\linericon\style.css" />
+    <Content Include="assets\vendors\nice-select\css\nice-select.css" />
+    <Content Include="assets\vendors\nice-select\css\style.css" />
+    <Content Include="assets\vendors\nice-select\js\jquery.nice-select.js" />
+    <Content Include="assets\vendors\nice-select\js\jquery.nice-select.min.js" />
+    <Content Include="assets\vendors\owl-carousel\assets\ajax-loader.gif" />
+    <Content Include="assets\vendors\owl-carousel\assets\animated.css" />
+    <Content Include="assets\vendors\owl-carousel\assets\owl.carousel.css" />
+    <Content Include="assets\vendors\owl-carousel\owl.carousel.min.css" />
+    <Content Include="assets\vendors\owl-carousel\owl.carousel.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -145,6 +327,34 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="assets\css\breadcrumb.css.map" />
+    <Content Include="assets\css\style.css.map" />
+    <Content Include="assets\css\_button.css.map" />
+    <Content Include="assets\css\_feature.css.map" />
+    <Content Include="assets\css\_footer.css.map" />
+    <Content Include="assets\css\_team.css.map" />
+    <Content Include="assets\css\_testimonials.css.map" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\img\elements\_DS_Store" />
+    <Content Include="assets\scss\breadcrumb.scss" />
+    <Content Include="assets\scss\style.scss" />
+    <Content Include="assets\scss\_blog.scss" />
+    <Content Include="assets\scss\_button.scss" />
+    <Content Include="assets\scss\_contact.scss" />
+    <Content Include="assets\scss\_elements.scss" />
+    <Content Include="assets\scss\_footer.scss" />
+    <Content Include="assets\scss\_header.scss" />
+    <Content Include="assets\scss\_megazin.scss" />
+    <Content Include="assets\scss\_predefine.scss" />
+    <Content Include="assets\scss\_variables.scss" />
+    <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.eot" />
+    <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.ttf" />
+    <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.woff" />
+    <Content Include="assets\vendors\linericon\fonts\Linearicons-Free.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -170,19 +380,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Detail.cshtml" />
+    <Content Include="Views\Posts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="assets\css\" />
-    <Folder Include="assets\fonts\" />
-    <Folder Include="assets\images\" />
-    <Folder Include="assets\img\" />
-    <Folder Include="assets\js\" />
-    <Folder Include="assets\scss\" />
-    <Folder Include="assets\vendors\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Post\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -198,10 +402,6 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FA.JustBlog.Common\FA.JustBlog.Common.csproj">
-      <Project>{00201a08-8c4f-4890-82e6-3a07a588ecae}</Project>
-      <Name>FA.JustBlog.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FA.JustBlog.Data\FA.JustBlog.Data.csproj">
       <Project>{51c5183d-8948-44df-9f26-54b986b2b0f8}</Project>
       <Name>FA.JustBlog.Data</Name>
@@ -231,7 +431,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>64539</DevelopmentServerPort>
+          <DevelopmentServerPort>62272</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>https://localhost:44303/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

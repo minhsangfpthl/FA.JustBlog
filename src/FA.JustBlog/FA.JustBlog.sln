@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.Data", "FA.Just
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.Services", "FA.JustBlog.Services\FA.JustBlog.Services.csproj", "{AE7A71CA-ECE2-4917-AFF2-508E48F45D25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.WebMVC", "FA.JustBlog.WebMVC\FA.JustBlog.WebMVC.csproj", "{B20F2685-C231-4754-B10B-D36FF8AD21D1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.Common", "FA.JustBlog.Common\FA.JustBlog.Common.csproj", "{00201A08-8C4F-4890-82E6-3A07A588ECAE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.DemoConsole", "FA.JustBlog.DemoConsole\FA.JustBlog.DemoConsole.csproj", "{84FC371F-A072-4101-913F-DADAF2B1F574}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA.JustBlog.WebMVC", "FA.JustBlog.WebMVC\FA.JustBlog.WebMVC.csproj", "{4208BF96-3B03-4DD1-8D33-293EE0E28DA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,6 @@ Global
 		{AE7A71CA-ECE2-4917-AFF2-508E48F45D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE7A71CA-ECE2-4917-AFF2-508E48F45D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE7A71CA-ECE2-4917-AFF2-508E48F45D25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B20F2685-C231-4754-B10B-D36FF8AD21D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B20F2685-C231-4754-B10B-D36FF8AD21D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B20F2685-C231-4754-B10B-D36FF8AD21D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B20F2685-C231-4754-B10B-D36FF8AD21D1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{00201A08-8C4F-4890-82E6-3A07A588ECAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{00201A08-8C4F-4890-82E6-3A07A588ECAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00201A08-8C4F-4890-82E6-3A07A588ECAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{84FC371F-A072-4101-913F-DADAF2B1F574}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84FC371F-A072-4101-913F-DADAF2B1F574}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84FC371F-A072-4101-913F-DADAF2B1F574}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4208BF96-3B03-4DD1-8D33-293EE0E28DA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4208BF96-3B03-4DD1-8D33-293EE0E28DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4208BF96-3B03-4DD1-8D33-293EE0E28DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4208BF96-3B03-4DD1-8D33-293EE0E28DA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
