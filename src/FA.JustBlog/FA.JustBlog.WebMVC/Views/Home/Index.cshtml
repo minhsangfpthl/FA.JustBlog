@@ -2,10 +2,11 @@
 @{
     ViewBag.Title = "Home Page";
 }
-<h1>@TempData["Infor"]</h1>
+
 @foreach (var item in Model)
 {
-    <div class="item">
+    @Html.Partial("_PostOverview", item)
+    @*@<div class="item">
         <div class="post_s_item">
             <div class="post_img">
                 <img src="../assets/images/@item.ImageUrl" alt="@item.ImageUrl" />
@@ -22,5 +23,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 }

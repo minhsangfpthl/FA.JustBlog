@@ -383,6 +383,8 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Shared\_PostOverview.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -402,6 +404,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FA.JustBlog.Common\FA.JustBlog.Common.csproj">
+      <Project>{00201a08-8c4f-4890-82e6-3a07a588ecae}</Project>
+      <Name>FA.JustBlog.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FA.JustBlog.Data\FA.JustBlog.Data.csproj">
       <Project>{51c5183d-8948-44df-9f26-54b986b2b0f8}</Project>
       <Name>FA.JustBlog.Data</Name>

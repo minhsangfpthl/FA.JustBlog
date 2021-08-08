@@ -100,8 +100,8 @@ namespace FA.JustBlog.Services.BaseServices
         }
 
         public virtual async Task<Paginated<TEntity>> GetAsync(Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            string includeProperties = "", int pageIndex = 1, int pageSize = 10)
+           Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+           string includeProperties = "", int pageIndex = 1, int pageSize = 10)
         {
             var query = _unitOfWork.GenericRepository<TEntity>().Get(filter: filter, orderBy: orderBy,
                 includeProperties: includeProperties);

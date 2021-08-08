@@ -30,9 +30,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Right</p>
-        </footer>
+        @Html.Partial("_Footer")
     </div>
 
     @Scripts.Render("~/bundles/jquery")
