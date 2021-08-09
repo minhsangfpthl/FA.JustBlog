@@ -1,0 +1,42 @@
+﻿@model Paginated<Post>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@foreach (var item in Model)
+{
+    <h1>@item.Title</h1>
+}
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+            ViewBag.PageRange = 3;
+        }
+        <li class="page-item">
+            <a href="@Url.Action("Index", "Home", new { pageIndex=1, currentFilter=ViewData["CurrentFilter"] })"
+               class="btn page-link @prevDisabled"><<</a>
+        <li class="page-item">
+            <a href="@Url.Action("Index", "Home", new {pageIndex=(Model.PageIndex - 1 <= 0 ? 1 : Model.PageIndex - 1), currentFilter=ViewData["CurrentFilter"] })"
+               class="btn page-link @prevDisabled"><</a>
+        </li>
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            if (i >= Model.PageIndex - ViewBag.PageRange && i <= Model.PageIndex + ViewBag.PageRange)
+            {
+                <li class="page-item">
+                    <a class="@(i==Model.PageIndex ? "Current" : "") page-link"
+                       href="@Url.Action("Index", "Home", new { pageIndex=i, currentFilter=ViewData["CurrentFilter"] })">@i</a>
+                </li>
+            }
+        }
+        <li class="page-item">
+            <a href="@Url.Action("Index", "Home", new { pageIndex=(Model.PageIndex + 1 > Model.TotalPages ? Model.TotalPages : Model.PageIndex + 1), currentFilter=ViewData["CurrentFilter"] })"
+               class="btn page-link @nextDisabled">></a>
+        <li class="page-item">
+            <a href="@Url.Action("Index", "Home", new { pageIndex=(Model.TotalPages), currentFilter=ViewData["CurrentFilter"] })"
+               class="btn page-link @nextDisabled">>></a>
+    </ul>
+</nav>
