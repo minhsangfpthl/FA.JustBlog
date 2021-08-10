@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="@Url.Action("Index", "Home", new { area = "" })">
-            <img src="~/Assets/images/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="~/Assets/images/J-solid.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
             JustBlog
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,9 +50,9 @@
                             Contributor Dashboard
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item">Category Management</a>
-                            <a class="dropdown-item">Post Management</a>
-                            <a class="dropdown-item">Tag Management</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "CategoryManagement", new { area = "Admin" })">Category Management</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "PostsManagement", new { area = "Admin" })">Post Management</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "TagManagement", new { area = "Admin" })">Tag Management</a>
                         </div>
                     </li>
                 }

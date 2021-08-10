@@ -24,5 +24,9 @@ input[type="checkbox"].input-validation-error {
 }
 .about-me-img {
     width: 200px;
-    height: auto;
+    height: 210px;
+}
+
+body{
+    background-image: url("../images/bg-3.jpg")
 }

@@ -57,10 +57,10 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
@@ -191,6 +191,13 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryManagementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PostsManagementController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TagManagementController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\BaseViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\CategoryViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\PostViewModels.cs" />
+    <Compile Include="Areas\Admin\ViewModels\TagViewModel.cs" />
     <Compile Include="Areas\Identity\Controllers\RolesAdminController.cs" />
     <Compile Include="Areas\Identity\Controllers\UserAdminController.cs" />
     <Compile Include="Areas\Identity\IdentityAreaRegistration.cs" />
@@ -209,7 +216,125 @@
   <ItemGroup>
     <Content Include="Assets\css\bootstrap.min.css" />
     <Content Include="Assets\css\Site.css" />
+    <Content Include="Assets\images\avatar\avatar-1.png" />
+    <Content Include="Assets\images\avatar\avatar-2.png" />
+    <Content Include="Assets\images\avatar\avatar-3.jpg" />
+    <Content Include="Assets\images\background.jpg" />
+    <Content Include="Assets\images\bg-1.jpg" />
     <Content Include="Assets\images\bootstrap-solid.svg" />
+    <Content Include="Assets\images\J-solid.jpg" />
+    <Content Include="Assets\images\posts\blog-1.jpg" />
+    <Content Include="Assets\images\posts\blog-2.jpg" />
+    <Content Include="Assets\images\posts\blog-3.jpg" />
+    <Content Include="Assets\images\posts\blog-4.jpg" />
+    <Content Include="Assets\images\posts\blog-5.jpg" />
+    <Content Include="Assets\images\posts\blog-6.jpg" />
+    <Content Include="Assets\img\banner\banner-2.jpg" />
+    <Content Include="Assets\img\banner\banner.jpg" />
+    <Content Include="Assets\img\banner\home-banner.jpg" />
+    <Content Include="Assets\img\blog\add-1.jpg" />
+    <Content Include="Assets\img\blog\add.jpg" />
+    <Content Include="Assets\img\blog\author.png" />
+    <Content Include="Assets\img\blog\c1.jpg" />
+    <Content Include="Assets\img\blog\c2.jpg" />
+    <Content Include="Assets\img\blog\c3.jpg" />
+    <Content Include="Assets\img\blog\c4.jpg" />
+    <Content Include="Assets\img\blog\c5.jpg" />
+    <Content Include="Assets\img\blog\c6.jpg" />
+    <Content Include="Assets\img\blog\cat-post\cat-post-1.jpg" />
+    <Content Include="Assets\img\blog\cat-post\cat-post-2.jpg" />
+    <Content Include="Assets\img\blog\cat-post\cat-post-3.jpg" />
+    <Content Include="Assets\img\blog\causes\causes-1.jpg" />
+    <Content Include="Assets\img\blog\causes\causes-2.jpg" />
+    <Content Include="Assets\img\blog\causes\causes-3.jpg" />
+    <Content Include="Assets\img\blog\choice\choice-1.jpg" />
+    <Content Include="Assets\img\blog\choice\choice-2.jpg" />
+    <Content Include="Assets\img\blog\choice\choice-3.jpg" />
+    <Content Include="Assets\img\blog\choice\choice-4.jpg" />
+    <Content Include="Assets\img\blog\feature-img1.jpg" />
+    <Content Include="Assets\img\blog\l-news\l-news-1.jpg" />
+    <Content Include="Assets\img\blog\l-news\l-news-2.jpg" />
+    <Content Include="Assets\img\blog\l-news\l-news-3.jpg" />
+    <Content Include="Assets\img\blog\l-news\l-news-4.jpg" />
+    <Content Include="Assets\img\blog\main-blog\m-blog-1.jpg" />
+    <Content Include="Assets\img\blog\main-blog\m-blog-2.jpg" />
+    <Content Include="Assets\img\blog\main-blog\m-blog-3.jpg" />
+    <Content Include="Assets\img\blog\main-blog\m-blog-4.jpg" />
+    <Content Include="Assets\img\blog\main-blog\m-blog-5.jpg" />
+    <Content Include="Assets\img\blog\news-blog.jpg" />
+    <Content Include="Assets\img\blog\next.jpg" />
+    <Content Include="Assets\img\blog\popular-post\post1.jpg" />
+    <Content Include="Assets\img\blog\popular-post\post2.jpg" />
+    <Content Include="Assets\img\blog\popular-post\post3.jpg" />
+    <Content Include="Assets\img\blog\popular-post\post4.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-1.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-10.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-11.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-12.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-13.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-14.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-2.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-3.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-4.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-5.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-6.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-7.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-8.jpg" />
+    <Content Include="Assets\img\blog\popular-post\pp-9.jpg" />
+    <Content Include="Assets\img\blog\post-img1.jpg" />
+    <Content Include="Assets\img\blog\post-img2.jpg" />
+    <Content Include="Assets\img\blog\prev.jpg" />
+    <Content Include="Assets\img\blog\user-img.jpg" />
+    <Content Include="Assets\img\elements\a.jpg" />
+    <Content Include="Assets\img\elements\a2.jpg" />
+    <Content Include="Assets\img\elements\d.jpg" />
+    <Content Include="Assets\img\elements\disabled-check.png" />
+    <Content Include="Assets\img\elements\disabled-radio.png" />
+    <Content Include="Assets\img\elements\f1.jpg" />
+    <Content Include="Assets\img\elements\f2.jpg" />
+    <Content Include="Assets\img\elements\f3.jpg" />
+    <Content Include="Assets\img\elements\f4.jpg" />
+    <Content Include="Assets\img\elements\f5.jpg" />
+    <Content Include="Assets\img\elements\f6.jpg" />
+    <Content Include="Assets\img\elements\f7.jpg" />
+    <Content Include="Assets\img\elements\f8.jpg" />
+    <Content Include="Assets\img\elements\g1.jpg" />
+    <Content Include="Assets\img\elements\g2.jpg" />
+    <Content Include="Assets\img\elements\g3.jpg" />
+    <Content Include="Assets\img\elements\g4.jpg" />
+    <Content Include="Assets\img\elements\g5.jpg" />
+    <Content Include="Assets\img\elements\g6.jpg" />
+    <Content Include="Assets\img\elements\g7.jpg" />
+    <Content Include="Assets\img\elements\g8.jpg" />
+    <Content Include="Assets\img\elements\primary-check.png" />
+    <Content Include="Assets\img\elements\primary-radio.png" />
+    <Content Include="Assets\img\elements\success-check.png" />
+    <Content Include="Assets\img\elements\success-radio.png" />
+    <Content Include="Assets\img\elements\user1.png" />
+    <Content Include="Assets\img\elements\user2.png" />
+    <Content Include="Assets\img\favicon.png" />
+    <Content Include="Assets\img\footer-logo.png" />
+    <Content Include="Assets\img\home-blog\blog-1.jpg" />
+    <Content Include="Assets\img\home-blog\blog-2.jpg" />
+    <Content Include="Assets\img\home-blog\blog-3.jpg" />
+    <Content Include="Assets\img\home-blog\blog-4.jpg" />
+    <Content Include="Assets\img\home-blog\blog-5.jpg" />
+    <Content Include="Assets\img\home-blog\blog-6.jpg" />
+    <Content Include="Assets\img\instagram\Image-01.jpg" />
+    <Content Include="Assets\img\instagram\Image-02.jpg" />
+    <Content Include="Assets\img\instagram\Image-03.jpg" />
+    <Content Include="Assets\img\instagram\Image-04.jpg" />
+    <Content Include="Assets\img\instagram\Image-05.jpg" />
+    <Content Include="Assets\img\instagram\Image-06.jpg" />
+    <Content Include="Assets\img\instagram\Image-07.jpg" />
+    <Content Include="Assets\img\instagram\Image-08.jpg" />
+    <Content Include="Assets\img\logo.png" />
+    <Content Include="Assets\img\post-slider\post-cat-1.jpg" />
+    <Content Include="Assets\img\post-slider\post-cat-2.jpg" />
+    <Content Include="Assets\img\post-slider\post-s-1.jpg" />
+    <Content Include="Assets\img\post-slider\post-s-2.jpg" />
+    <Content Include="Assets\img\post-slider\post-s-3.jpg" />
+    <Content Include="Assets\img\post-slider\post-s-4.jpg" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\jquery-3.4.1.js" />
     <Content Include="Assets\js\jquery-3.4.1.min.js" />
@@ -278,16 +403,25 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
-    <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Assets\images\avatar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryManagement\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\CategoryManagement\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PostsManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\PostsManagement\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PostsManagement\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TagManagement\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TagManagement\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TagManagement\Create.cshtml" />
+    <Content Include="Assets\img\elements\_DS_Store" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_AboutMe.cshtml" />
+    <Content Include="Views\Shared\_PostOverView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
