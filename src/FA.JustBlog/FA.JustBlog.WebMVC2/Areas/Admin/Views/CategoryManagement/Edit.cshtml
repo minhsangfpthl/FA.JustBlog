@@ -3,14 +3,14 @@
 @{
     ViewBag.Title = "Edit: " + Model.Name;
 }
-
-<h2 style="color:white">Edit Category: @Model.Name</h2>
+<div style="color:wheat"></div>
+<h2>Edit Category: @Model.Name</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(x => x.Id)
-    <div class="row" style="color:white">
+    <div class="row">
         <div class="col-md-12">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         </div>
@@ -42,7 +42,9 @@
             <button type="submit" class="btn btn-info">
                 Edit
             </button>
-            @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
+            <div class="btn-dark">
+                @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
+            </div>
         </div>
     </div>
 }

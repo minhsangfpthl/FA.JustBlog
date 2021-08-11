@@ -1,5 +1,6 @@
 using FA.JustBlog.Data.Infrastructure;
 using FA.JustBlog.Services;
+using FA.JustBlog.WebMVC2.Areas.Identity.Controllers;
 using FA.JustBlog.WebMVC2.Controllers;
 using System;
 
@@ -53,6 +54,8 @@ namespace FA.JustBlog.WebMVC2
 
             container.RegisterType<AccountController>(new InjectionConstructor());
             container.RegisterType<ManageController>(new InjectionConstructor());
+            container.RegisterType<UsersAdminController>(new InjectionConstructor());
+            container.RegisterType<RolesAdminController>(new InjectionConstructor());
         }
     }
 }
