@@ -15,6 +15,8 @@ namespace FA.JustBlog.Services
 
         Task<IEnumerable<Post>> GetPostsByMonthAsync(DateTime monthYear);
 
+        Task<Post> GetPostsByDateAndUrlSlugAsync(int year,int month,string urlSlug);
+
         Task<int> CountPostsForCategoryAsync(string category);
 
         Task<IEnumerable<Post>> GetPostsByCategoryAsync(string category);
@@ -22,5 +24,7 @@ namespace FA.JustBlog.Services
         Task<int> CountPostsForTagAsync(string tag);
 
         Task<IEnumerable<Post>> GetPostsByTagAsync(string tag);
+
+        Task<IEnumerable<Post>> GetPostsByTagAsync(Guid tagId);
     }
 }

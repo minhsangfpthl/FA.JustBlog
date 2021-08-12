@@ -205,6 +205,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
+    <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -422,6 +424,10 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_AboutMe.cshtml" />
     <Content Include="Views\Shared\_PostOverView.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\_LastestPosts.cshtml" />
+    <Content Include="Views\Tag\_PopularTags.cshtml" />
+    <Content Include="Views\Tag\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

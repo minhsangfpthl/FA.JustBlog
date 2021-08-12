@@ -38,8 +38,8 @@ C:\Users\7577\source\repos\ass\fa.justblog\src\FA.JustBlog\FA.JustBlog.DemoConso
 C:\Users\7577\source\repos\ass\fa.justblog\src\FA.JustBlog\FA.JustBlog.DemoConsole\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\7577\source\repos\ass\fa.justblog\src\FA.JustBlog\FA.JustBlog.DemoConsole\bin\Debug\System.Web.Razor.xml
 C:\Users\7577\source\repos\ass\fa.justblog\src\FA.JustBlog\FA.JustBlog.DemoConsole\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\7577\source\repos\ass\fa.justblog\src\FA.JustBlog\FA.JustBlog.DemoConsole\obj\Debug\FA.JustBlog.DemoConsole.csprojAssemblyReference.cache
 C:\Users\7577\source\repos\ass\fa.justblog\src\FA.JustBlog\FA.JustBlog.DemoConsole\obj\Debug\FA.JustBlog.DemoConsole.csproj.CoreCompileInputs.cache
 C:\Users\7577\source\repos\ass\fa.justblog\src\FA.JustBlog\FA.JustBlog.DemoConsole\obj\Debug\FA.JustBlog.DemoConsole.csproj.CopyComplete
 C:\Users\7577\source\repos\ass\fa.justblog\src\FA.JustBlog\FA.JustBlog.DemoConsole\obj\Debug\FA.JustBlog.DemoConsole.exe
 C:\Users\7577\source\repos\ass\fa.justblog\src\FA.JustBlog\FA.JustBlog.DemoConsole\obj\Debug\FA.JustBlog.DemoConsole.pdb
-C:\Users\7577\source\repos\ass\fa.justblog\src\FA.JustBlog\FA.JustBlog.DemoConsole\obj\Debug\FA.JustBlog.DemoConsole.csprojAssemblyReference.cache
