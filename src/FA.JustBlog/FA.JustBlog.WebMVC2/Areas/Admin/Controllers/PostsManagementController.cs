@@ -15,10 +15,15 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
     public class PostsManagementController : Controller
     {
         private readonly IPostServices _postServices;
+        private readonly ICategoryServices _categoryServices;
+        private readonly ITagServices _tagServices;
 
-        public PostsManagementController(IPostServices postServices)
+        public PostsManagementController(IPostServices postServices, ICategoryServices categoryServices,
+                                            ITagServices tagServices)
         {
             _postServices = postServices;
+            _categoryServices = categoryServices;
+            _tagServices = tagServices;
         }
 
         // GET: Admin/PostsManagement
@@ -27,7 +32,7 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
         {
             ViewData["CurrentPageSize"] = pageSize;
             ViewData["CurrentSort"] = sortOrder;
-            ViewData["NameSortParm"] = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["TitleSortParm"] = string.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             ViewData["UrlSlugSortParm"] = sortOrder == "UrlSlug" ? "urlSlug_desc" : "UrlSlug";
             ViewData["TotalTagsSortParm"] = sortOrder == "TotalTags" ? "totalTags_desc" : "TotalTags";
             ViewData["InsertedAtSortParm"] = sortOrder == "InsertedAt" ? "insertedAt_desc" : "InsertedAt";
@@ -57,7 +62,7 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
 
             switch (sortOrder)
             {
-                case "name_desc":
+                case "title_desc":
                     orderBy = q => q.OrderByDescending(c => c.Title);
                     break;
                 case "UrlSlug":
@@ -98,7 +103,9 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
         // GET: Admin/PostsManagement/Create
         public ActionResult Create()
         {
+            ViewBag.Categories = new SelectList(_categoryServices.GetAll(), "Id", "Name");
             var postViewModel = new PostViewModels();
+            postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });
             return View(postViewModel);
         }
 
@@ -108,7 +115,7 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create(PostViewModels postViewModel)
+        public async Task<ActionResult> Create(PostViewModels postViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -120,7 +127,9 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
                     PostContent = postViewModel.PostContent,
                     UrlSlug = postViewModel.UrlSlug,
                     Published = postViewModel.Published,
-                    PublishedDate = postViewModel.PublishedDate
+                    PublishedDate = postViewModel.PublishedDate,
+                    CategoryId = postViewModel.CategoryId,
+                    Tags = await GetSelectedTagFromIds(postViewModel.SelectedTagIds)
                 };
                 var result = _postServices.Add(post);
                 if (result > 0)
@@ -134,11 +143,33 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
                 }
             }
 
+            ViewBag.Categories = new SelectList(await _categoryServices.GetAllAsync(), "Id", "Name", postViewModel.CategoryId);
+            postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });
             return View(postViewModel);
         }
 
+        private async Task<ICollection<Tag>> GetSelectedTagFromIds(IEnumerable<Guid> selectedTagIds)
+        {
+            var tags = new List<Tag>();
+
+            if (selectedTagIds == null)
+            {
+                return tags;
+            }
+            var tagEntities = await _tagServices.GetAllAsync();
+
+            foreach (var item in tagEntities)
+            {
+                if (selectedTagIds.Any(x => x == item.Id))
+                {
+                    tags.Add(item);
+                }
+            }
+            return tags;
+        }
+
         // GET: Admin/PostManagement/Edit/5
-        public ActionResult Edit(Guid? id)
+        public async Task<ActionResult> Edit(Guid? id)
         {
             if (id == null)
             {
@@ -158,8 +189,13 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
                 PostContent = post.PostContent,
                 UrlSlug = post.UrlSlug,
                 Published = post.Published,
-                PublishedDate = post.PublishedDate
+                PublishedDate = post.PublishedDate,
+                CategoryId = post.CategoryId,
+                SelectedTagIds = post.Tags.Select(x => x.Id)
             };
+            ViewBag.Categories = new SelectList(_categoryServices.GetAll(), "Id", "Name", postViewModel.CategoryId);
+            postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });
+            ViewBag.TagList = _tagServices.GetAll();
             return View(postViewModel);
         }
 
@@ -184,20 +220,37 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
                 post.UrlSlug = post.UrlSlug;
                 post.Published = post.Published;
                 post.PublishedDate = post.PublishedDate;
-                var result = _postServices.Update(post);
+                post.Published = postViewModel.Published;
+                post.CategoryId = postViewModel.CategoryId;
+                await UpdateSelectedTagFromIds(postViewModel.SelectedTagIds, post);
+
+                var result = await _postServices.UpdateAsync(post);
                 if (result)
                 {
-                    TempData["Message"] = "Update successfully";
+                    TempData["Message"] = "Update successful!";
                 }
                 else
                 {
-                    TempData["Message"] = "Update failed";
+                    TempData["Message"] = "Update failed!";
+
                 }
                 return RedirectToAction("Index");
             }
+            ViewBag.Categories = new SelectList(await _categoryServices.GetAllAsync(), "Id", "Name", postViewModel.CategoryId);
+            postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });
+            ViewBag.TagList = _tagServices.GetAll();
             return View(postViewModel);
         }
 
+        private async Task UpdateSelectedTagFromIds(IEnumerable<Guid> selectedTagIds, Post post)
+        {
+            var tags = post.Tags;
+            foreach (var item in tags.ToList())
+            {
+                post.Tags.Remove(item);
+            }
+            post.Tags = await GetSelectedTagFromIds(selectedTagIds);
+        }
 
         // POST: Admin/PostsManagement/Delete/5
         [HttpPost, ActionName("Delete")]

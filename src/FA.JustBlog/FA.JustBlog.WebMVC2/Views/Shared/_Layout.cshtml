@@ -78,6 +78,8 @@
                 </form>
                 @Html.Partial("_AboutMe")
                 <hr />
+                @Html.Action("LastestPosts", "Posts")
+                <hr />
                 @Html.Action("PopularTags", "Tag")
             </div>
         </div>

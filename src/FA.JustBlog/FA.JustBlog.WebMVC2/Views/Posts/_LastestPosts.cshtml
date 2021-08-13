@@ -1,6 +1,11 @@
 ﻿@model IEnumerable<Post>
 
-@foreach (var item in Model)
-{
-
-}
+<aside class="single-sidebar-widget tag_cloud_widget" style="background-color:gainsboro">
+    <h4 class="widget_title">Lastest Post</h4>
+    <ul class="list">
+        @foreach (var item in Model)
+        {
+            <li><a>@item.Title</a></li>
+        }
+    </ul>
+</aside>

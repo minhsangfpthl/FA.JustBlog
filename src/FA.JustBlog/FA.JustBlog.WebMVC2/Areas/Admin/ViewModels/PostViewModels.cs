@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace FA.JustBlog.WebMVC2.Areas.Admin.ViewModels
 {
@@ -26,5 +27,11 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.ViewModels
         public bool Published { get; set; }
 
         public DateTime PublishedDate { get; set; }
+
+        public Guid CategoryId { get; set; }
+
+        public IEnumerable<Guid> SelectedTagIds { get; set; }
+
+        public IEnumerable<SelectListItem> Tags { get; set; }
     }
 }

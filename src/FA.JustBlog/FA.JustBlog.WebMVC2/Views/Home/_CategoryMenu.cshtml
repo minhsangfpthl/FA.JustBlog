@@ -1,0 +1,8 @@
+﻿@model IEnumerable<CategoryMenuViewModel>
+
+@foreach (var item in Model)
+{
+    <li class="nav-item">
+       @Html.ActionLink(item.Name, "Details", "Category", new { id = item.Id }, new { @class = "nav-link" });
+    </li>
+}

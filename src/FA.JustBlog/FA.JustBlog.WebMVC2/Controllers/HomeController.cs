@@ -1,5 +1,6 @@
 ﻿using FA.JustBlog.Models.Common;
 using FA.JustBlog.Services;
+using FA.JustBlog.WebMVC2.Areas.Admin.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,12 @@ namespace FA.JustBlog.WebMVC2.Controllers
     public class HomeController : Controller
     {
         private readonly IPostServices _postServices;
+        private readonly ICategoryServices _categoyServices;
 
-        public HomeController(IPostServices postServices)
+        public HomeController(IPostServices postServices, ICategoryServices categoyServices)
         {
             _postServices = postServices;
+            _categoyServices = categoyServices;
         }
 
         [HttpGet]
@@ -62,6 +65,18 @@ namespace FA.JustBlog.WebMVC2.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult CategoryMenu()
+        {
+            var categoryViewModels = _categoyServices.GetAll().Select(x => new CategoryViewModel
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToList();
+
+
+            return PartialView("_CategoryMenu", categoryViewModels);
         }
     }
 }

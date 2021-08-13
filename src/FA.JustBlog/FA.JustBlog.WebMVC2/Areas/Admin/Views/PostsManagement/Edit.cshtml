@@ -31,18 +31,42 @@
     </div>
 
     <div class="form-group col-md-4">
-        @Html.LabelFor(model => model.PostContent, htmlAttributes: new { @class = "control-label" })
-        <div>
-            @Html.EditorFor(model => model.PostContent, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PostContent, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group col-md-4">
         @Html.LabelFor(model => model.UrlSlug, htmlAttributes: new { @class = "control-label" })
         <div>
             @Html.EditorFor(model => model.UrlSlug, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.UrlSlug, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group col-md-4">
+        @Html.LabelFor(model => model.PublishedDate, htmlAttributes: new { @class = "control-label" })
+        <div>
+            @Html.EditorFor(model => model.PublishedDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PublishedDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label" })
+        <div>
+            @Html.DropDownListFor(model => model.CategoryId, (IEnumerable<SelectListItem>)ViewBag.Categories, htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label class="control-label" for="Tag">Tags</label>
+        <div class="">
+            @Html.ListBoxFor(model => model.SelectedTagIds, new MultiSelectList(ViewBag.TagList, "Id", "Name", Model.SelectedTagIds), new { @class = "select-tag-multiple" })
+        </div>
+    </div>
+
+
+    <div class="form-group col-md-12">
+        @Html.LabelFor(model => model.PostContent, htmlAttributes: new { @class = "control-label" })
+        <div class="">
+            <textarea class="form-control" name="PostContent" id="ckeditor">@Model.PostContent</textarea>
+            @Html.ValidationMessageFor(model => model.PostContent, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -51,14 +75,6 @@
         <div>
             @Html.EditorFor(model => model.Published, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group col-md-4">
-        @Html.LabelFor(model => model.PublishedDate, htmlAttributes: new { @class = "control-label" })
-        <div>
-            @Html.EditorFor(model => model.PublishedDate, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PublishedDate, "", new { @class = "text-danger" })
         </div>
     </div>
 
