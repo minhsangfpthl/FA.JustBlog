@@ -30,6 +30,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("Contact", "Home", new { area = "" })">Contact</a>
                 </li>
+
+
                 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                 {
                     <li class="nav-item dropdown">
@@ -56,6 +58,7 @@
                         </div>
                     </li>
                 }
+                @Html.Action("Menu", "Home", new { area = "" })
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
@@ -77,6 +80,8 @@
                     </div>
                 </form>
                 @Html.Partial("_AboutMe")
+                <hr />
+                @Html.Action("MostViewedPosts", "Posts")
                 <hr />
                 @Html.Action("LastestPosts", "Posts")
                 <hr />

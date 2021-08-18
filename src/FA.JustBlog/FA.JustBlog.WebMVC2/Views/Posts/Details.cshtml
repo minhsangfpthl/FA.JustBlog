@@ -1,5 +1,38 @@
 ﻿@model Post
-    @{ 
+
+    @{
         ViewBag.Title = Model.Title;
     }
-<h1 style="color:wheat">@Model.Title</h1>
+<div style="color:wheat">
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>@Model.Title</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Home Banner Area =================-->
+    <!--================Blog Area =================-->
+    <section class="blog_area p_120 single-post-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="main_blog_details">
+                        <img class="img-fluid" src="~/assets/img/home-blog/@Model.ImageUrl" alt="">
+                        <h4><a href="@Url.Action("Details","Categories", new { id = Model.Category.Id })">@Model.Category.Name</a></h4>
+                        <hr />
+                        @Html.Raw(Model.ShortDescription)
+                        <hr />
+                        @Html.Raw(@Model.PostContent)
+                        <hr />
+                        @Html.Raw(Model.InsertedAt)
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

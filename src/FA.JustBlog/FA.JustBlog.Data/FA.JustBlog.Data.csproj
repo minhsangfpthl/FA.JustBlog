@@ -105,17 +105,9 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="JustBlogDbContext.cs" />
-    <Compile Include="Migrations\202108010910229_Fix.cs" />
-    <Compile Include="Migrations\202108010910229_Fix.designer.cs">
-      <DependentUpon>202108010910229_Fix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108091545068_update.cs" />
-    <Compile Include="Migrations\202108091545068_update.designer.cs">
-      <DependentUpon>202108091545068_update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202108091813141_update-seedData.cs" />
-    <Compile Include="Migrations\202108091813141_update-seedData.designer.cs">
-      <DependentUpon>202108091813141_update-seedData.cs</DependentUpon>
+    <Compile Include="Migrations\202108170920468_innitia.cs" />
+    <Compile Include="Migrations\202108170920468_innitia.designer.cs">
+      <DependentUpon>202108170920468_innitia.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,14 +123,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202108010910229_Fix.resx">
-      <DependentUpon>202108010910229_Fix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108091545068_update.resx">
-      <DependentUpon>202108091545068_update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202108091813141_update-seedData.resx">
-      <DependentUpon>202108091813141_update-seedData.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108170920468_innitia.resx">
+      <DependentUpon>202108170920468_innitia.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

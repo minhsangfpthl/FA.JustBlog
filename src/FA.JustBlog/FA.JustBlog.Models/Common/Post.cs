@@ -30,6 +30,13 @@ namespace FA.JustBlog.Models.Common
         public bool Published { get; set; }
 
         public DateTime PublishedDate { get; set; }
+        public int ViewCount { get; set; }
+
+        public int RateCount { get; set; }
+
+        public int TotalRate { get; set; }
+
+        public decimal Rate => RateCount == 0 ? 0 : TotalRate / RateCount;
 
         [ForeignKey("Category")]
         public Guid CategoryId { get; set; }

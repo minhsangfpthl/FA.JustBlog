@@ -1,6 +1,7 @@
 ﻿using FA.JustBlog.Models.Common;
 using FA.JustBlog.Services;
 using FA.JustBlog.WebMVC2.Areas.Admin.ViewModels;
+using FA.JustBlog.WebMVC2.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,6 +78,19 @@ namespace FA.JustBlog.WebMVC2.Controllers
 
 
             return PartialView("_CategoryMenu", categoryViewModels);
+        }
+
+        public ActionResult Menu()
+        {
+            var categories = _categoyServices.GetAll();
+            var popularCategories = categories.OrderByDescending(x => x.Posts.Count).Take(3);
+            var rightCategories = categories.OrderByDescending(x => x.Posts.Count).Skip(3);
+            var categoryMenuViewModel = new CategoryMenuViewModel()
+            {
+                PopularCategory = popularCategories,
+                rightCategories = rightCategories
+            };
+            return PartialView("_CategoryMenu", categoryMenuViewModel);
         }
     }
 }

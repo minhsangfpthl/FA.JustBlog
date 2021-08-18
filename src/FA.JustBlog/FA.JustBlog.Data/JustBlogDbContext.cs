@@ -10,7 +10,9 @@ namespace FA.JustBlog.Data
 {
     public class JustBlogDbContext : IdentityDbContext<User>
     {
-
+        public JustBlogDbContext() : base("JustBlogDbConn")
+        {
+        }
 
         static JustBlogDbContext()
         {

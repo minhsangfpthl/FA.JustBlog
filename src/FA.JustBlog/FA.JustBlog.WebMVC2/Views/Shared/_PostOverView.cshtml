@@ -2,10 +2,10 @@
 <div class="card mb-3">
     <img src="~/assets/img/home-blog/@Model.ImageUrl" class="card-img-top" alt="@Model.Title" />
     <div class="card-body">
-        <h5 class="card-title">@Model.Title</h5>
-        <p class="card-text"> @Model.ShortDescription</p>
         <a href="@Url.Action("Details","Posts", new {  year=@Model.PublishedDate.Year,
                                                     month=@Model.PublishedDate.Month.ToString("D2"),
-                                                    urlSlug=@Model.UrlSlug})" class="btn btn-primary">More details...</a>
+                                                    urlSlug=@Model.UrlSlug})" class="btn btn-primary">
+        @Model.Title</a>
+        <p class="card-text"> @Model.ShortDescription</p>
     </div>
 </div>

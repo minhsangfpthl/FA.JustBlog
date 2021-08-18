@@ -847,6 +847,7 @@
     <Content Include="Views\Tag\Details.cshtml" />
     <Content Include="Views\Home\_CategoryMenu.cshtml" />
     <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Posts\_MostViewedPosts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -88,5 +88,15 @@ namespace FA.JustBlog.Services
             }
             return base.AddAsync(entity);
         }
+
+        public async Task<IEnumerable<Post>> GetMostViewPostsAsync(int size)
+        {
+            return await _unitOfWork.PostRepository.GetQuery().OrderByDescending(p => p.ViewCount).Take(size).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Post>> GetHighestPostsAsync(int size)
+        {
+            return await _unitOfWork.PostRepository.GetQuery().OrderByDescending(p => p.Rate).Take(size).ToListAsync();
+        }
     }
 }

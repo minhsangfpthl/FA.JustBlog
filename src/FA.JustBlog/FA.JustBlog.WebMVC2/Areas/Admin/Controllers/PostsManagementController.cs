@@ -103,7 +103,7 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
         // GET: Admin/PostsManagement/Create
         public ActionResult Create()
         {
-            ViewBag.Categories = new SelectList(_categoryServices.GetAll(), "Id", "Name");
+            ViewBag.Posts = new SelectList(_postServices.GetAll(), "Id", "Name");
             var postViewModel = new PostViewModels();
             postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });
             return View(postViewModel);
@@ -143,7 +143,7 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
                 }
             }
 
-            ViewBag.Categories = new SelectList(await _categoryServices.GetAllAsync(), "Id", "Name", postViewModel.CategoryId);
+            ViewBag.Posts = new SelectList(await _postServices.GetAllAsync(), "Id", "Name", postViewModel.CategoryId);
             postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });
             return View(postViewModel);
         }
@@ -193,7 +193,7 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
                 CategoryId = post.CategoryId,
                 SelectedTagIds = post.Tags.Select(x => x.Id)
             };
-            ViewBag.Categories = new SelectList(_categoryServices.GetAll(), "Id", "Name", postViewModel.CategoryId);
+            ViewBag.Posts = new SelectList(_postServices.GetAll(), "Id", "Name", postViewModel.CategoryId);
             postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });
             ViewBag.TagList = _tagServices.GetAll();
             return View(postViewModel);
@@ -236,7 +236,7 @@ namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            ViewBag.Categories = new SelectList(await _categoryServices.GetAllAsync(), "Id", "Name", postViewModel.CategoryId);
+            ViewBag.Posts = new SelectList(await _postServices.GetAllAsync(), "Id", "Name", postViewModel.CategoryId);
             postViewModel.Tags = _tagServices.GetAll().Select(t => new SelectListItem { Value = t.Id.ToString(), Text = t.Name });
             ViewBag.TagList = _tagServices.GetAll();
             return View(postViewModel);

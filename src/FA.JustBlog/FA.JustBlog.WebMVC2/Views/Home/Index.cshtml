@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+<h1 style="color:aqua">
+    All Posts!
+</h1>
 @foreach (var item in Model)
 {
     @Html.Partial("_PostOverView", item)

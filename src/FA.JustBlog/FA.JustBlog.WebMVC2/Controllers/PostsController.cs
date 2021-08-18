@@ -34,5 +34,11 @@ namespace FA.JustBlog.WebMVC2.Controllers
             var lastestPosts = Task.Run(() => _postServices.GetLatestPostAsync(3)).Result;
             return PartialView("_LastestPosts", lastestPosts);
         }
+
+        public ActionResult MostViewedPosts()
+        {
+            var mostViewdPosts = Task.Run(() => _postServices.GetMostViewPostsAsync(3)).Result;
+            return PartialView("_MostViewedPosts", mostViewdPosts);
+        }
     }
 }
