@@ -101,10 +101,10 @@ else
                 }
             }
             <li class="page-item">
-                <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=(Model.PageIndex + 1 > Model.TotalPages ? Model.TotalPages : Model.PageIndex + 1), currentFilter=ViewData["CurrentFilter"] })"
+                <a href="@Url.Action("Index", "TagManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=(Model.PageIndex + 1 > Model.TotalPages ? Model.TotalPages : Model.PageIndex + 1), currentFilter=ViewData["CurrentFilter"] })"
                    class="btn page-link @nextDisabled">></a>
             <li class="page-item">
-                <a href="@Url.Action("Index", "CategoryManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=(Model.TotalPages), currentFilter=ViewData["CurrentFilter"] })"
+                <a href="@Url.Action("Index", "TagManagement", new { sortOrder=ViewData["CurrentSort"], pageIndex=(Model.TotalPages), currentFilter=ViewData["CurrentFilter"] })"
                    class="btn page-link @nextDisabled">>></a>
         </ul>
     </nav>

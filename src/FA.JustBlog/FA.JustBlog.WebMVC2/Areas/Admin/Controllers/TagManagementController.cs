@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace FA.JustBlog.WebMVC2.Areas.Admin.Controllers
 {
+    [Authorize]
     public class TagManagementController : Controller
     {
         private readonly ITagServices _tagServices;
